@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mario.Views.PracticeListView"
+             xmlns:templates="clr-namespace:Mario.Views.Template;assembly=Mario"
+             BackgroundColor="{StaticResource BackColor}"
+             Title="Mis prácticas">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding NewPractice}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="new_icon"
+                            iOS="new_icon"
+                            WinPhone="Assets/new_icon.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Practicas}" 
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      SeparatorVisibility="None" HorizontalOptions="CenterAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:PracticeListTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

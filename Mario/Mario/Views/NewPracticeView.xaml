@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mario.Views.NewPracticeView" 
+             xmlns:behaviors="clr-namespace:Mario.Behaviors;assembly=Mario">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Empezar" Command="{Binding StartCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="start_icon"
+                            iOS="start_icon"
+                            WinPhone="Assets/start_icon.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Volver" Command="{Binding BackCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="back_icon"
+                            iOS="back_icon"
+                            WinPhone="Assets/back_icon.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Label Text="Nueva práctica" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BackColor}"  Style="{StaticResource MainLabel}" HorizontalTextAlignment="Center"/>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Fecha:" Style="{StaticResource MainLabel}"/>
+                <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Fecha, StringFormat='{0:dd/MM/yyyy}', Mode=TwoWay}" Style="{StaticResource TextBox}" HorizontalOptions="End">
+                    <Entry.Behaviors>
+                        <behaviors:DateEntryBehavior />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Grid.Row="1" Grid.Column="0" Text="Descripción:" Style="{StaticResource SecondLabel}"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Descripcion, Mode=TwoWay}" Style="{StaticResource TextBox}" HorizontalOptions="FillAndExpand"/>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Tiempo por ejercicio (min):" Style="{StaticResource SecondLabel}"/>
+                <Entry Grid.Row="2" Grid.Column="2" Text="{Binding Minutos, Mode=TwoWay}" Style="{StaticResource TextBox}" HorizontalOptions="End"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

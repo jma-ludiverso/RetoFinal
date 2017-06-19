@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mario.Views.Template.PracticeListTemplate">
+    <ContentView.Content>
+        <Frame OutlineColor="{StaticResource BackColor}" BackgroundColor="{StaticResource PrimaryColor}">
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Fecha, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource MainLabel}"/>
+                <Label Grid.Row="0" Grid.Column="1" Text=" - " Style="{StaticResource MainLabel}"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Descripcion}" Style="{StaticResource TextLabel}" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Tiempo por ejercicio (min):" Style="{StaticResource SecondLabel}"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Minutos}" Style="{StaticResource TextLabel}" HorizontalTextAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Resultado (%):" Style="{StaticResource SecondLabel}"/>
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding Resultado}" Style="{StaticResource TextLabel}" BackgroundColor="{Binding ResultColor}" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontAttributes="Bold"/>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

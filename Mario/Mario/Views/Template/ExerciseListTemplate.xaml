@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mario.Views.Template.ExerciseListTemplate">
+  <ContentView.Content>
+      <StackLayout>
+            <Grid HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Numero}" Style="{StaticResource TextLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding FormattedTime}" Style="{StaticResource TextLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                <Image Grid.Row="0" Grid.Column="2" Source="{Binding ImagenResultado}" HorizontalOptions="CenterAndExpand"></Image>
+            </Grid>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

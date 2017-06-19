@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mario.Views.PracticingView"
+             xmlns:templates="clr-namespace:Mario.Views.Template;assembly=Mario">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Borrar" Command="{Binding BorrarCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="start_icon"
+                            iOS="start_icon"
+                            WinPhone="Assets/delete_icon.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Volver" Command="{Binding VolverCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="back_icon"
+                            iOS="back_icon"
+                            WinPhone="Assets/back_icon.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame OutlineColor="{StaticResource PrimaryColor}" IsVisible="{Binding TimerVisible}" HorizontalOptions="FillAndExpand" >
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Tiempo:" Style="{StaticResource MainLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding RunningTime}" Style="{StaticResource SecondLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Ejercicio Nº:" Style="{StaticResource SecondLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding LastNumber}" Style="{StaticResource SecondLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    <Button Grid.Row="2" Grid.Column="0"  Text="Pause" Command="{Binding PauseCommand}" HorizontalOptions="End" Style="{StaticResource ButtonStyle}"/>
+                    <Button Grid.Row="2" Grid.Column="1" Text="He terminado!" Command="{Binding NewExerciseCommand}" HorizontalOptions="End" Style="{StaticResource ButtonStyle}"/>
+                    <Button Grid.Row="3" Grid.Column="1" Text="Fin de la práctica" Command="{Binding EndPracticeCommand}" HorizontalOptions="End" Style="{StaticResource ButtonStyle}"/>
+                </Grid>
+            </Frame>
+            <Label Text="Listado de ejercicios" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BackColor}" Style="{StaticResource MainLabel}" HorizontalTextAlignment="Center"/>
+            <ListView ItemsSource="{Binding Exercises}" 
+                      SeparatorVisibility="Default">
+                <ListView.Header>
+                    <StackLayout BackgroundColor="LightGray">
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="#" Style="{StaticResource MainLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Tiempo" Style="{StaticResource MainLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Resultado" Style="{StaticResource MainLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:ExerciseListTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
